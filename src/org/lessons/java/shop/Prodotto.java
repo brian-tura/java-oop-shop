@@ -1,13 +1,16 @@
 package org.lessons.java.shop;
 
-public class Prodotto {
-    int codice;
-    String nome;
-    String descrizione;
-    float prezzo;
-    int iva;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-    public Prodotto(String nome, String descrizione, float prezzo, int iva) {
+public class Prodotto {
+    public int codice;
+    public String nome;
+    public String descrizione;
+    public BigDecimal prezzo;
+    public BigDecimal iva;
+
+    public Prodotto(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
@@ -16,12 +19,12 @@ public class Prodotto {
     }
 
     public void getPrezzo() {
-        System.out.println(this.prezzo);
+        System.out.println(prezzo.setScale(2, RoundingMode.DOWN));
     }
 
     public void getPrezzoIva() {
-        this.prezzo += this.prezzo * this.iva / 100;
-        System.out.println(this.prezzo);
+        BigDecimal prezzoIva = prezzo.add(prezzo.multiply(iva));
+        System.out.println(prezzoIva.setScale(2, RoundingMode.DOWN));
     }
 
     public void getNome() {
