@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Prodotto {
-    public int codice;
+    private int codice;
     public String nome;
     public String descrizione;
     public BigDecimal prezzo;
@@ -18,17 +18,51 @@ public class Prodotto {
         this.codice = (int) (Math.random() * 1000001);
     }
 
-    public void getPrezzo() {
-        System.out.println(prezzo.setScale(2, RoundingMode.DOWN));
+    public Prodotto(String nome, BigDecimal prezzo, BigDecimal iva) {
+        this.nome = nome;
+        this.prezzo = prezzo;
+        this.iva = iva;
+        this.codice = (int) (Math.random() * 1000001);
     }
 
-    public void getPrezzoIva() {
+    public BigDecimal getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(BigDecimal prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public String getNome() {
+        return this.codice + "-" + this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public BigDecimal getIva() {
+        return this.iva;
+    }
+    
+    public void setIva(BigDecimal iva) {
+        this.iva = iva;
+    }
+
+    public String getDescrizione() {
+        return this.descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public BigDecimal getPrezzoIva() {
         BigDecimal prezzoIva = prezzo.add(prezzo.multiply(iva));
-        System.out.println(prezzoIva.setScale(2, RoundingMode.DOWN));
+        return prezzoIva;
     }
 
-    public void getNome() {
-        System.out.println(this.codice + "-" + this.nome);
+    public int getCodice() {
+        return this.codice;
     }
-
 }
