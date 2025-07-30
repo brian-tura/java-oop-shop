@@ -5,16 +5,18 @@ import java.math.RoundingMode;
 
 public class Prodotto {
     private int codice;
-    public String nome;
-    public String descrizione;
-    public BigDecimal prezzo;
-    public BigDecimal iva;
+    String nome;
+    String descrizione;
+    String marca;
+    BigDecimal prezzo;
+    BigDecimal iva;
 
-    public Prodotto(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva) {
+    public Prodotto(String nome, String descrizione, String marca, BigDecimal prezzo, BigDecimal iva) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.iva = iva;
+        this.marca = marca;
         this.codice = (int) (Math.random() * 1000001);
     }
 
@@ -60,6 +62,14 @@ public class Prodotto {
     public BigDecimal getPrezzoIva() {
         BigDecimal prezzoIva = prezzo.add(prezzo.multiply(iva));
         return prezzoIva;
+    }
+
+    public String getMarca() {
+        return this.marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public int getCodice() {
