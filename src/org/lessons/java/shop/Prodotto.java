@@ -1,7 +1,6 @@
 package org.lessons.java.shop;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Prodotto {
     private int codice;
